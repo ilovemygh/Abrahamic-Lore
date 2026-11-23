@@ -22,6 +22,7 @@ export const ICON_NAMES = [
   'lightning',
   'check',
   'x',
+  'github',
 ] as const
 
 export type IconName = (typeof ICON_NAMES)[number]

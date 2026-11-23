@@ -73,6 +73,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 | `/compare/[slug]` | `src/app/compare/[slug]/page.tsx` | **Interactive Matrix**: Side-by-side comparison with tradition filter toggles, live text search/keyword highlighting, Points of Convergence, and Points of Divergence. |
 | `/timeline` | `src/app/timeline/page.tsx` | **Comparative Timeline & Lineage Tree**: Historical sequence from Abraham to modern era, plus tree visualization of Abrahamic prophetic lineage. |
 | `/search` | `src/app/search/page.tsx` | **Global Search**: Client-side instant filter across all traditions, topics, figures, and comparative concepts. |
+| `/about` | `src/app/about/page.tsx` | **About & Contributors**: README project overview, `ilovemygh` GitHub organization, contributors/owners, tech stack, and phase roadmap. |
 | `/login` | `src/app/login/page.tsx` | **Sign In**: Supabase auth sign-in with email/password. |
 | `/register` | `src/app/register/page.tsx` | **Sign Up**: Account creation with guest preference transfer support. |
 

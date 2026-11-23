@@ -35,8 +35,14 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-10 border-t border-stone-200 pt-6 text-xs text-stone-400">
-          © 2026 Abrahamic Lore. A shared space for learning.
+        <div className="mt-10 flex flex-col gap-2 border-t border-stone-200 pt-6 text-xs text-stone-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Abrahamic Lore. A shared space for learning.</p>
+          <Link
+            href="/about"
+            className="text-stone-500 underline underline-offset-4 hover:text-stone-900 transition-colors"
+          >
+            About & Contributors
+          </Link>
         </div>
       </div>
     </footer>
