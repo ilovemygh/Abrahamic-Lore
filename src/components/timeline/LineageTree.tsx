@@ -1,5 +1,22 @@
+type LineageNode = {
+  name: string
+  desc?: string
+  tradition: string
+  highlight?: boolean
+  mother?: string
+  destiny?: string
+  badge?: string
+  ancestor?: string
+  prophets?: string[]
+}
+
+type LineageGeneration = {
+  level: string
+  nodes: LineageNode[]
+}
+
 export function LineageTree() {
-  const generations = [
+  const generations: LineageGeneration[] = [
     {
       level: 'The Primordial Origin',
       nodes: [
@@ -66,7 +83,7 @@ export function LineageTree() {
             </span>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {gen.nodes.map((node: any, nIdx: number) => {
+              {gen.nodes.map((node, nIdx) => {
                 const isHighlight = node.highlight
                 return (
                   <div

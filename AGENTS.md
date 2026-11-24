@@ -72,7 +72,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 | `/topics/[slug]` | `src/app/topics/[slug]/page.tsx` | **Topic Detail View**: Overview, historical context, canonical text references, comparative takeaways, and link to interactive compare view. |
 | `/compare/[slug]` | `src/app/compare/[slug]/page.tsx` | **Interactive Matrix**: Side-by-side comparison with tradition filter toggles, live text search/keyword highlighting, Points of Convergence, and Points of Divergence. |
 | `/timeline` | `src/app/timeline/page.tsx` | **Comparative Timeline & Lineage Tree**: Historical sequence from Abraham to modern era, plus tree visualization of Abrahamic prophetic lineage. |
-| `/search` | `src/app/search/page.tsx` | **Global Search**: Client-side instant filter across all traditions, topics, figures, and comparative concepts. |
+| `/search` | `src/app/search/page.tsx` | **Global Search**: Client-side ranked search across profiles, references, topics, and comparative concepts; query text is shareable in the URL. |
+| `/characters`, `/characters/[slug]` | `src/app/characters/` | **Names & Figures**: Searchable pilot directory, separate name profiles, source references, and attributed relationship claims. |
+| `/sources` | `src/app/sources/page.tsx` | **Editorial Approach**: Source handling, attribution, and review status. |
+| `/feedback` | `src/app/feedback/page.tsx` | **Correction Intake**: Prefilled GitHub Issue for a manual editorial review queue. |
+| `/api/v1/*` | `src/app/api/v1/` | **Name Catalogue API**: Versioned list, profile, search, and exact-name resolution endpoints over pilot data. |
 | `/about` | `src/app/about/page.tsx` | **About & Contributors**: README project overview, `ilovemygh` GitHub organization, contributors/owners, tech stack, and phase roadmap. |
 | `/login` | `src/app/login/page.tsx` | **Sign In**: Supabase auth sign-in with email/password. |
 | `/register` | `src/app/register/page.tsx` | **Sign Up**: Account creation with guest preference transfer support. |

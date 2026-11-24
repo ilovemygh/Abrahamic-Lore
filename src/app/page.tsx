@@ -12,8 +12,7 @@ import Footer from '@/components/layout/Footer'
 import Hero from '@/components/home/Hero'
 import FeaturedTopics from '@/components/home/FeaturedTopics'
 import ExploreAcrossTraditions from '@/components/home/ExploreAcrossTraditions'
-import RecommendedForYou from '@/components/home/RecommendedForYou'
-import ContinueLearning from '@/components/home/ContinueLearning'
+import NamesIndexFeature from '@/components/home/NamesIndexFeature'
 
 export default function HomePage() {
   const { prefs, update, ready } = usePreferences()
@@ -73,10 +72,9 @@ export default function HomePage() {
         />
         <main className="flex-1">
           <Hero tradition={prefs.tradition} onChangeTradition={() => setShowOnboarding(true)} />
-          <RecommendedForYou tradition={prefs.tradition} />
-          <FeaturedTopics />
-          <ContinueLearning />
+          <NamesIndexFeature />
           <ExploreAcrossTraditions />
+          <FeaturedTopics />
         </main>
         <Footer />
       </div>

@@ -14,99 +14,68 @@ export default function ExplorePage() {
   const topics = Object.values(TOPIC_DETAILS)
 
   return (
-    <div className="flex min-h-screen flex-col bg-stone-50">
+    <div className="flex min-h-screen flex-col bg-[#fbfaf7]">
       <Navbar tradition={null} />
 
-      <main className="flex-1 mx-auto max-w-6xl px-4 py-12 sm:px-6 space-y-12">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         {/* Header */}
-        <section className="text-center space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-stone-500">
-            Comparative Corpus
-          </p>
-          <h1 className="text-4xl font-serif font-bold text-stone-900 sm:text-5xl">
-            Explore Sacred Perspectives
-          </h1>
-          <p className="text-stone-600 max-w-2xl mx-auto text-base">
-            Journey through shared roots, distinctive revelations, and theological nuances across the Abrahamic traditions.
-          </p>
+        <section className="max-w-3xl border-b border-stone-300 pb-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#805535]">Explore the collection</p>
+          <h1 className="mt-3 font-serif text-4xl font-medium leading-tight tracking-tight text-stone-950 sm:text-5xl">Choose a path through the material.</h1>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-stone-600">Compare figures and ideas, or follow a subject into its historical and scriptural context.</p>
         </section>
 
         {/* Featured Comparative Entities */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
-            <h2 className="text-xl font-bold font-serif text-stone-900">
-              Comparative Analysis & Figures
-            </h2>
-            <span className="text-xs text-stone-500">{comparisons.length} deep-dives</span>
+        <section className="mt-12">
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-stone-300 pb-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#805535]">Compare traditions</p>
+              <h2 className="mt-2 font-serif text-3xl font-medium text-stone-950">Figures &amp; ideas</h2>
+            </div>
+            <span className="text-sm text-stone-500">{comparisons.length} studies</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {comparisons.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/compare/${c.slug}`}
-                className="group rounded-2xl border border-stone-200 bg-white p-6 shadow-xs hover:border-stone-400 hover:shadow-md transition-all flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center rounded-full bg-stone-100 px-2.5 py-0.5 text-xs font-medium text-stone-700">
-                      {c.category}
-                    </span>
-                    <span className="text-xs font-medium text-stone-400 group-hover:text-stone-900 transition-colors">
-                      Compare →
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-serif font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
-                    {c.title}
-                  </h3>
-                  <p className="text-sm text-stone-600 leading-relaxed line-clamp-2">
-                    {c.summary}
-                  </p>
-                </div>
-
-                <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
-                  <div className="flex gap-2">
-                    <span className="px-1.5 py-0.5 bg-blue-50 text-blue-700 rounded font-medium">Judaism</span>
-                    <span className="px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded font-medium">Christianity</span>
-                    <span className="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 rounded font-medium">Islam</span>
-                  </div>
-                  <span>{c.convergencePoints?.length || 0} convergences</span>
-                </div>
-              </Link>
+          <ul className="divide-y divide-stone-200">
+            {comparisons.map((c, index) => (
+              <li key={c.slug}>
+                <Link href={`/compare/${c.slug}`} className="group grid min-h-24 gap-2 py-5 sm:grid-cols-[2.5rem_minmax(10rem,0.45fr)_minmax(0,1fr)_auto] sm:items-center sm:gap-5">
+                  <span className="font-serif text-sm text-stone-400">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-stone-500">{c.category}</span>
+                  <span>
+                    <span className="block font-serif text-xl font-medium text-stone-950 group-hover:text-[#805535]">{c.title}</span>
+                    <span className="mt-1 block max-w-2xl text-sm leading-6 text-stone-600">{c.summary}</span>
+                  </span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-stone-600">Read study</span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         {/* Thematic Topics */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
-            <h2 className="text-xl font-bold font-serif text-stone-900">
-              Thematic Categories
-            </h2>
-            <span className="text-xs text-stone-500">{topics.length} topics</span>
+        <section className="mt-16">
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-stone-300 pb-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#805535]">Study by subject</p>
+              <h2 className="mt-2 font-serif text-3xl font-medium text-stone-950">Topics &amp; contexts</h2>
+            </div>
+            <span className="text-sm text-stone-500">{topics.length} topics</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {topics.map((t) => (
-              <Link
-                key={t.slug}
-                href={`/topics/${t.slug}`}
-                className="rounded-xl border border-stone-200 bg-white p-5 hover:border-stone-400 hover:shadow-xs transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <Icon name={t.icon} className="h-6 w-6 mb-2 text-stone-700" />
-                  <h3 className="text-base font-bold text-stone-900">{t.title}</h3>
-                  <p className="mt-1 text-xs text-stone-600 line-clamp-2 leading-relaxed">
-                    {t.summary}
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-400">
-                  <span>{t.category}</span>
-                  <span className="font-semibold text-stone-700">Explore →</span>
-                </div>
-              </Link>
+          <ul className="grid gap-x-12 sm:grid-cols-2">
+            {topics.map((topic) => (
+              <li key={topic.slug} className="border-b border-stone-200">
+                <Link href={`/topics/${topic.slug}`} className="group flex min-h-20 items-start gap-4 py-4">
+                  <Icon name={topic.icon} className="mt-1 h-5 w-5 text-stone-500" />
+                  <span>
+                    <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-stone-500">{topic.category}</span>
+                    <span className="mt-1 block font-serif text-lg font-medium text-stone-900 group-hover:text-[#805535]">{topic.title}</span>
+                    <span className="mt-1 block text-sm leading-5 text-stone-600">{topic.summary}</span>
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </main>
 

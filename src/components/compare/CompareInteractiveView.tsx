@@ -8,6 +8,7 @@ import type { ComparisonEntity } from '@/data/abrahamic_entities'
 interface CompareInteractiveViewProps {
   entity: ComparisonEntity
   allComparisons: { slug: string; title: string; category: string }[]
+  profileLinks?: Partial<Record<TraditionKey, { href: string; name: string }>>
 }
 
 type TraditionKey = 'judaism' | 'christianity' | 'islam'
@@ -52,6 +53,7 @@ const TRADITION_CONFIG: Record<
 export default function CompareInteractiveView({
   entity,
   allComparisons,
+  profileLinks = {},
 }: CompareInteractiveViewProps) {
   const [activeTab, setActiveTab] = useState<'matrix' | 'deep-dive' | 'divergence'>('matrix')
   const [selectedTraditions, setSelectedTraditions] = useState<TraditionKey[]>([
@@ -212,7 +214,11 @@ export default function CompareInteractiveView({
                     <div>
                       <p className="text-xs uppercase font-semibold text-stone-400">Designation</p>
                       <h3 className="mt-0.5 text-base font-semibold text-stone-900">
-                        {highlightMatches(data.name, filterQuery)}
+                        {profileLinks[t] ? (
+                          <Link href={profileLinks[t]!.href} aria-label={`Open the ${profileLinks[t]!.name} name profile`} className="underline decoration-stone-300 underline-offset-4 hover:text-[#805535] hover:decoration-[#805535]">
+                            {highlightMatches(data.name, filterQuery)}
+                          </Link>
+                        ) : highlightMatches(data.name, filterQuery)}
                       </h3>
                       {data.titleOrHonorific && (
                         <p className="text-xs text-stone-500 italic mt-0.5">

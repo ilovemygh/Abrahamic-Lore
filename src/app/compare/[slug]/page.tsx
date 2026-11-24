@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { COMPARISON_ENTITIES } from '@/data/abrahamic_entities'
 import CompareInteractiveView from '@/components/compare/CompareInteractiveView'
 import Icon from '@/components/ui/Icon'
+import { CHARACTER_NAMES, getRelationshipsForComparison } from '@/data/characters'
 
 export async function generateMetadata({
   params,
@@ -69,6 +70,12 @@ export default async function ComparePage({
     title: c.title,
     category: c.category,
   }))
+  const nameRelationships = getRelationshipsForComparison(slug)
+  const profileLinksByTradition = Object.fromEntries(
+    nameRelationships
+      .flatMap((relationship) => CHARACTER_NAMES.filter((name) => relationship.nameIds.includes(name.id)))
+      .map((name) => [name.tradition, { href: `/characters/${name.slug}`, name: name.name }]),
+  )
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 space-y-8">
@@ -84,29 +91,66 @@ export default async function ComparePage({
       </nav>
 
       {/* Header Banner */}
-      <header className="rounded-3xl border border-stone-200 bg-linear-to-b from-stone-50 via-white to-stone-50/40 p-6 sm:p-10 shadow-xs">
+      <header className="border-y border-stone-300 bg-[#f4f0e9] px-5 py-7 sm:px-9 sm:py-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <span className="inline-flex items-center rounded-full bg-stone-200/70 px-3 py-1 text-xs font-semibold text-stone-700">
-            {entity.category}
-          </span>
-          <div className="flex items-center gap-2 text-xs text-stone-500 font-medium">
-            <span>Traditions:</span>
-            <span className="rounded-md bg-blue-50 px-2 py-0.5 text-blue-700 font-medium">Judaism</span>
-            <span className="rounded-md bg-amber-50 px-2 py-0.5 text-amber-800 font-medium">Christianity</span>
-            <span className="rounded-md bg-emerald-50 px-2 py-0.5 text-emerald-700 font-medium">Islam</span>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#805535]">{entity.category}</span>
+          <div className="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.1em] text-stone-600">
+            <span className="text-blue-800">Judaism</span>
+            <span className="text-rose-800">Christianity</span>
+            <span className="text-emerald-800">Islam</span>
           </div>
         </div>
 
-        <h1 className="mt-4 text-2xl sm:text-4xl font-serif font-bold tracking-tight text-stone-900">
+        <h1 className="mt-5 max-w-4xl font-serif text-4xl font-medium leading-tight tracking-tight text-stone-950 sm:text-5xl">
           {entity.title}
         </h1>
-        <p className="mt-3 text-base text-stone-600 max-w-3xl leading-relaxed">
+        <p className="mt-4 max-w-3xl text-base leading-7 text-stone-700">
           {entity.summary}
         </p>
       </header>
 
+      {nameRelationships.map((relationship) => {
+        const names = CHARACTER_NAMES.filter((name) =>
+          relationship.nameIds.includes(name.id),
+        )
+
+        return (
+          <section
+            key={relationship.id}
+            aria-labelledby={`${relationship.id}-heading`}
+            className="border-y border-stone-200 py-6"
+          >
+            <div className="max-w-3xl">
+              <h2
+                id={`${relationship.id}-heading`}
+                className="font-serif text-xl font-semibold text-stone-900"
+              >
+                {relationship.label}
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-stone-600">
+                {relationship.note}
+              </p>
+            </div>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-3">
+              {names.map((name) => (
+                <li key={name.id}>
+                  <Link
+                    href={`/characters/${name.slug}`}
+                    className="flex min-h-14 items-center justify-between gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm hover:border-stone-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-700"
+                  >
+                    <span className="font-semibold text-stone-900">{name.name}</span>
+                    <span className="text-stone-500">Profile</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-stone-500">{relationship.reviewStatus}</p>
+          </section>
+        )
+      })}
+
       {/* Main Interactive Comparison View */}
-      <CompareInteractiveView entity={entity} allComparisons={allSummaries} />
+      <CompareInteractiveView entity={entity} allComparisons={allSummaries} profileLinks={profileLinksByTradition} />
     </main>
   )
 }

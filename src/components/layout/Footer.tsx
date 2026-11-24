@@ -14,24 +14,18 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-stone-400">Explore</p>
             <ul className="mt-3 space-y-2 text-sm text-stone-500">
-              <li><Link href="/traditions" className="hover:text-stone-900 transition-colors">Browse Traditions</Link></li>
-              <li><Link href="/topics" className="hover:text-stone-900 transition-colors">Topics</Link></li>
-              <li><Link href="/search" className="hover:text-stone-900 transition-colors">Search</Link></li>
+              <li><Link href="/traditions" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">Browse Traditions</Link></li>
+              <li><Link href="/characters" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">Names &amp; Figures</Link></li>
+              <li><Link href="/topics" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">Topics</Link></li>
+              <li><Link href="/search" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">Search</Link></li>
             </ul>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-stone-400">Platform</p>
             <ul className="mt-3 space-y-2 text-sm text-stone-500">
-              <li><Link href="/about" className="hover:text-stone-900 transition-colors">About</Link></li>
-              <li><Link href="/sources" className="hover:text-stone-900 transition-colors">Sources & Editorial Principles</Link></li>
-              <li><Link href="/feedback" className="hover:text-stone-900 transition-colors">Contact & Feedback</Link></li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-stone-400">Legal</p>
-            <ul className="mt-3 space-y-2 text-sm text-stone-500">
-              <li><Link href="/privacy" className="hover:text-stone-900 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-stone-900 transition-colors">Terms of Service</Link></li>
+              <li><Link href="/about" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">About</Link></li>
+              <li><Link href="/sources" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">Sources &amp; editorial approach</Link></li>
+              <li><Link href="/feedback" className="inline-flex min-h-11 items-center hover:text-stone-900 transition-colors">Suggest a correction</Link></li>
             </ul>
           </div>
         </div>

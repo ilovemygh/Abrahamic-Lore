@@ -2,10 +2,34 @@
 
 :root {
   font-optical-sizing: auto;
+  color-scheme: light;
+  --paper: #fbfaf7;
+  --ink: #211f1a;
+  --muted-ink: #68645c;
+  --rule: #e4e0d8;
+  --accent: #7d4d2b;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #e9dccb;
+  color: #211f1a;
+}
+
+:focus-visible {
+  outline: 2px solid #7d4d2b;
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
